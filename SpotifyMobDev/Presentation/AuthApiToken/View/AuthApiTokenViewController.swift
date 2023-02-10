@@ -1,19 +1,14 @@
 import UIKit
 import WebKit
 
-class SplashViewController : UIViewController {
-    var viewModel = SplashViewModel(spotifyApiService: SpotifyAPIService())
-    var tabBarVC = TabBarController()
+class AuthApiTokenViewController : UIViewController {
+    var viewModel = AuthApitokenViewModel(spotifyApiService: SpotifyAPIService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        self.navigationItem.setHidesBackButton(true, animated: false)
         getApiToken()
-    }
-    
-    func goToHomeView(){
-        let viewController = TabBarController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func getApiToken(){
@@ -23,8 +18,13 @@ class SplashViewController : UIViewController {
         webview.navigationDelegate = self
         view = webview
     }
+    
+    func goToHomeView(){
+        let viewController = TabBarController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
-extension SplashViewController : WKNavigationDelegate {
+extension AuthApiTokenViewController : WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let urlString = webView.url?.absoluteString else { return }
         print(urlString)
@@ -45,7 +45,6 @@ extension SplashViewController : WKNavigationDelegate {
             UserDefaults.standard.setValue(tokenString, forKey: "myToken")
             goToHomeView()
             webView.removeFromSuperview()
-            print("Auth Token \(tokenString)")
         }
     }
 }

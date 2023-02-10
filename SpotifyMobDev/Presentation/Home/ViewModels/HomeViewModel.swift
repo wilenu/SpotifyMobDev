@@ -17,7 +17,7 @@ class HomeViewModel {
                 self.releasesList = self.getAlbumsFromResponse(response: response)
                 self.releasesListDownloaded?()
             }else{
-                
+                print(error ?? "error")
             }
         })
     }

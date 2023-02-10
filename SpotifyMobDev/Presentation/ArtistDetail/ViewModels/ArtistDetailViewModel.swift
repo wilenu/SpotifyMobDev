@@ -16,10 +16,9 @@ class ArtistDetailViewModel{
                 self.artistInfo = response
                 self.artistInfoReady?()
             }else{
-                
+                print(error ?? "error")
             }
         })
     }
     
 }
-

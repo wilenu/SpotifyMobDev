@@ -15,7 +15,7 @@ class CategoriesViewModel{
                 self.genresList = response?.genres
                 self.genresListDownloaded?()
             }else{
-                
+                print(error ?? "error")
             }
         })
     }

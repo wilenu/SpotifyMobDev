@@ -5,7 +5,6 @@ class CategoriesViewController : UIViewController {
     private let viewModel = CategoriesViewModel(dataService: SpotifyAPIService())
     private let genre = UILabel()
     var genresList: [String] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +22,7 @@ class CategoriesViewController : UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ])
+        ])
     }
     
     func tableSetup(){
@@ -53,4 +52,3 @@ extension CategoriesViewController: UITableViewDataSource{
         return cell
     }
 }
-

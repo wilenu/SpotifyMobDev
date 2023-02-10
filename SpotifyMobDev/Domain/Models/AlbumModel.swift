@@ -6,7 +6,7 @@ struct AlbumModel: Codable {
     let id: String
     let images: [Image]
     let name, releaseDate: String
-
+    
     enum CodingKeys: String, CodingKey {
         case artists
         case href, id, images, name

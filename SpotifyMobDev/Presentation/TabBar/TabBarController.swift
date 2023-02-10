@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
         
         homevc.tabBarItem.image = UIImage(systemName: "play.square.stack")
         categoryvc.tabBarItem.image = UIImage(systemName: "text.line.first.and.arrowtriangle.forward")
-
+        
         setViewControllers([homevc,categoryvc], animated: true)
     }
 }

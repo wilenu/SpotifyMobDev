@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class SplashViewModel {
+class AuthApitokenViewModel {
     private var spotifyApiService: SpotifyAPIService?
     
     init(spotifyApiService: SpotifyAPIService){
@@ -15,11 +15,9 @@ class SplashViewModel {
         components.path = "/authorize"
         
         components.queryItems = ApiCredentials.authParams.map({URLQueryItem(name: $0, value: $1)})
-        
         guard let url = components.url else { return nil }
         
         return URLRequest(url: url)
     }
-    
 }
 

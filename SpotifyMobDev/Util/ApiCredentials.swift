@@ -1,7 +1,3 @@
-
-
-import Foundation
-
 enum ApiCredentials {
     static let apiHost = "api.spotify.com"
     static let authHost = "accounts.spotify.com"
@@ -10,7 +6,7 @@ enum ApiCredentials {
     static let redirectUri = "https://www.google.com"
     static let responseType = "token"
     static let scopes = ""
-   
+    
     static var authParams = [
         "response_type": responseType,
         "client_id": clientId,

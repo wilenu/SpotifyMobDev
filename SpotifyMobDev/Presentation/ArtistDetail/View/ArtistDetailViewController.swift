@@ -8,9 +8,8 @@ class ArtistDetailViewController: UIViewController {
     private let artistgenres = UILabel()
     private let artistImage = UIImageView()
     var artisID: String = ""
-    let viewModel = ArtistDetailViewModel(dataService: SpotifyAPIService())
+    private let viewModel = ArtistDetailViewModel(dataService: SpotifyAPIService())
     var artistInfo: ArtisInfoModel?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +17,7 @@ class ArtistDetailViewController: UIViewController {
         title = "Artista"
         artistInfoSetup()
         initSetup()
-        let a = artisID
-        print(a)
-        viewModel.getArtistInfo(artistID: a)
-        
+        viewModel.getArtistInfo(artistID: artisID)
     }
     
     func artistInfoSetup(){
@@ -110,4 +106,3 @@ class ArtistDetailViewController: UIViewController {
         view.addSubview(artistgenres)
     }
 }
-

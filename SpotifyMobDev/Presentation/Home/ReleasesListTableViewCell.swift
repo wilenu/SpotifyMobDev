@@ -2,10 +2,10 @@ import UIKit
 import Kingfisher
 
 class ReleasesListTableViewCell: UITableViewCell{
-    var albumTitle = UILabel()
-    var artistName = UILabel()
-    let releaseDate = UILabel()
-    let albumImage = UIImageView()
+    private var albumTitle = UILabel()
+    private var artistName = UILabel()
+    private let releaseDate = UILabel()
+    private let albumImage = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,11 +22,10 @@ class ReleasesListTableViewCell: UITableViewCell{
         albumTittleCell()
         artistNameCell()
         releaseDateCell()
-        ReleasesCellConstraints()
-        
+        layout()
     }
     
-    private func ReleasesCellConstraints(){
+    private func layout(){
         NSLayoutConstraint.activate([
             albumImage.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             albumImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
@@ -45,32 +44,32 @@ class ReleasesListTableViewCell: UITableViewCell{
     }
     
     private func albumImageCell(){
-        albumImage.contentMode = .scaleAspectFill
         albumImage.translatesAutoresizingMaskIntoConstraints = false
+        albumImage.contentMode = .scaleAspectFill
         albumImage.layer.cornerRadius = 15
         albumImage.clipsToBounds = true
         addSubview(albumImage)
     }
     
     private func albumTittleCell(){
+        albumTitle.translatesAutoresizingMaskIntoConstraints = false
         albumTitle.font = .boldSystemFont(ofSize: 20)
         albumTitle.textColor = .black
-        albumTitle.translatesAutoresizingMaskIntoConstraints = false
         albumTitle.numberOfLines = 0
         addSubview(albumTitle)
     }
     
     private func artistNameCell(){
+        artistName.translatesAutoresizingMaskIntoConstraints = false
         artistName.font = .systemFont(ofSize: 16)
         artistName.textColor = .black
-        artistName.translatesAutoresizingMaskIntoConstraints = false
         addSubview(artistName)
     }
     
     private func releaseDateCell(){
+        releaseDate.translatesAutoresizingMaskIntoConstraints = false
         releaseDate.font = .systemFont(ofSize: 16)
         releaseDate.textColor = .black
-        releaseDate.translatesAutoresizingMaskIntoConstraints = false
         addSubview(releaseDate)
     }
     
@@ -79,8 +78,5 @@ class ReleasesListTableViewCell: UITableViewCell{
         self.artistName.text = nameArtist
         self.releaseDate.text = date
         self.albumImage.kf.setImage(with: URL(string: image))
-        
     }
-    
 }
-
