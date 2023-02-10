@@ -9,7 +9,7 @@ class TabBarController: UITabBarController {
         setupTabBar()
     }
     
-    func setupTabBar() {
+    private func setupTabBar() {
         let homevc = UINavigationController(rootViewController: HomeViewController())
         let categoryvc = UINavigationController(rootViewController: CategoriesViewController())
         

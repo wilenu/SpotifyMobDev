@@ -3,7 +3,7 @@ import Alamofire
 
 class HomeViewModel {
     
-    private var dataService : SpotifyAPIService?
+    private let dataService : SpotifyAPIService?
     var releasesListDownloaded : (() -> ())?
     var releasesList : [AlbumModel]?
     

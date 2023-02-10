@@ -94,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB6CF3D29955BE700F69752 /* HomeViewController.swift */,
+				6FB6CF772995B2FB00F69752 /* ReleasesListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB6CF7329959A2300F69752 /* CategoriesViewController.swift */,
+				6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,8 +230,6 @@
 			children = (
 				6FAC1B102996EC290042D4EA /* ViewModels */,
 				6FAC1B112996EC380042D4EA /* View */,
-				6FB6CF772995B2FB00F69752 /* ReleasesListTableViewCell.swift */,
-				6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

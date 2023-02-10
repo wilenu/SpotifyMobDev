@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 
 class AuthApitokenViewModel {
-    private var spotifyApiService: SpotifyAPIService?
+    private let spotifyApiService: SpotifyAPIService?
     
     init(spotifyApiService: SpotifyAPIService){
         self.spotifyApiService = spotifyApiService

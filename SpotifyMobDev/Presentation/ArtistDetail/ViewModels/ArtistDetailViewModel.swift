@@ -2,7 +2,7 @@ import UIKit
 
 class ArtistDetailViewModel{
     
-    private var dataService : SpotifyAPIService?
+    private let dataService : SpotifyAPIService?
     var artistInfo: ArtisInfoModel?
     var artistInfoReady: (() -> ())?
     
@@ -20,5 +20,4 @@ class ArtistDetailViewModel{
             }
         })
     }
-    
 }

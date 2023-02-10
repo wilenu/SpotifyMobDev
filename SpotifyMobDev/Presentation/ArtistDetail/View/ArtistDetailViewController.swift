@@ -2,70 +2,70 @@ import UIKit
 import Kingfisher
 
 class ArtistDetailViewController: UIViewController {
-    private let artistTittle = UILabel()
+    private let artistTitle = UILabel()
     private let artistFolowers = UILabel()
-    private let descriptionTittle = UILabel()
+    private let descriptionTitle = UILabel()
     private let artistgenres = UILabel()
     private let artistImage = UIImageView()
     var artisID: String = ""
     private let viewModel = ArtistDetailViewModel(dataService: SpotifyAPIService())
-    var artistInfo: ArtisInfoModel?
+    private var artistInfo: ArtisInfoModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Artista"
-        artistInfoSetup()
+        getArtistInfo()
         initSetup()
         viewModel.getArtistInfo(artistID: artisID)
     }
     
-    func artistInfoSetup(){
+    private func getArtistInfo(){
         self.viewModel.artistInfoReady = { [self] in
             self.artistInfo = self.viewModel.artistInfo
             setArtistInfo()
         }
     }
     
-    func setArtistInfo(){
+    private func setArtistInfo(){
         guard let artistData = artistInfo else { return }
-        artistTittle.text = artistData.name
+        artistTitle.text = artistData.name
         artistFolowers.text = "Seguidores: \((String(describing: artistData.followers.total)))"
-        artistgenres.text = artistData.genres.joined(separator: ",")
+        artistgenres.text = artistData.genres.joined(separator: ", ")
         artistImage.kf.setImage(with: URL(string: artistData.images[0].url))
     }
     
-    func initSetup(){
+    private func initSetup(){
         artistImageSetup()
-        artistTittleSetup()
+        artistTitleSetup()
         artistFolowersSetup()
-        descriptionTittleSetup()
+        descriptionTitleSetup()
         artistgenresSetup()
         layout()
     }
     
-    func layout(){
+    private func layout(){
         NSLayoutConstraint.activate([
             artistImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             artistImage.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
             artistImage.widthAnchor.constraint(equalToConstant: 120),
             artistImage.heightAnchor.constraint(equalToConstant: 120),
-            artistTittle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 40),
-            artistTittle.leadingAnchor.constraint(equalTo: artistImage.trailingAnchor, constant: 16),
-            artistTittle.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
-            artistFolowers.topAnchor.constraint(equalTo: artistTittle.bottomAnchor, constant: 10),
+            artistTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 40),
+            artistTitle.leadingAnchor.constraint(equalTo: artistImage.trailingAnchor, constant: 16),
+            artistTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -10),
+            artistFolowers.topAnchor.constraint(equalTo: artistTitle.bottomAnchor, constant: 10),
             artistFolowers.leadingAnchor.constraint(equalTo: artistImage.trailingAnchor, constant: 16 ),
             artistFolowers.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            descriptionTittle.topAnchor.constraint(equalTo: artistImage.bottomAnchor, constant: 30),
-            descriptionTittle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            descriptionTittle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            artistgenres.topAnchor.constraint(equalTo: descriptionTittle.bottomAnchor, constant: 30),
+            descriptionTitle.topAnchor.constraint(equalTo: artistImage.bottomAnchor, constant: 30),
+            descriptionTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            artistgenres.topAnchor.constraint(equalTo: descriptionTitle.bottomAnchor, constant: 30),
             artistgenres.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             artistgenres.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
     
-    func artistImageSetup(){
+    private func artistImageSetup(){
         artistImage.translatesAutoresizingMaskIntoConstraints = false
         artistImage.contentMode = .scaleAspectFill
         artistImage.layer.cornerRadius = 15
@@ -73,14 +73,14 @@ class ArtistDetailViewController: UIViewController {
         view.addSubview(artistImage)
     }
     
-    func artistTittleSetup(){
-        artistTittle.translatesAutoresizingMaskIntoConstraints = false
-        artistTittle.font = .boldSystemFont(ofSize: 30)
-        artistTittle.numberOfLines = 0
-        view.addSubview(artistTittle)
+    private func artistTitleSetup(){
+        artistTitle.translatesAutoresizingMaskIntoConstraints = false
+        artistTitle.font = .boldSystemFont(ofSize: 30)
+        artistTitle.numberOfLines = 0
+        view.addSubview(artistTitle)
     }
     
-    func artistFolowersSetup(){
+    private func artistFolowersSetup(){
         artistFolowers.translatesAutoresizingMaskIntoConstraints = false
         artistFolowers.font = .systemFont(ofSize: 18)
         artistFolowers.textColor = .black
@@ -88,17 +88,17 @@ class ArtistDetailViewController: UIViewController {
         view.addSubview(artistFolowers)
     }
     
-    func descriptionTittleSetup(){
-        descriptionTittle.translatesAutoresizingMaskIntoConstraints = false
-        descriptionTittle.font = .boldSystemFont(ofSize: 30)
-        descriptionTittle.textColor = .black
-        descriptionTittle.text = "Géneros"
-        descriptionTittle.textAlignment = .left
-        descriptionTittle.numberOfLines = 0
-        view.addSubview(descriptionTittle)
+    private func descriptionTitleSetup(){
+        descriptionTitle.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTitle.font = .boldSystemFont(ofSize: 30)
+        descriptionTitle.textColor = .black
+        descriptionTitle.text = "Géneros"
+        descriptionTitle.textAlignment = .left
+        descriptionTitle.numberOfLines = 0
+        view.addSubview(descriptionTitle)
     }
     
-    func artistgenresSetup(){
+    private func artistgenresSetup(){
         artistgenres.translatesAutoresizingMaskIntoConstraints = false
         artistgenres.font = .systemFont(ofSize: 20)
         artistgenres.textColor = .black

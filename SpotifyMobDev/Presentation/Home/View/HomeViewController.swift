@@ -2,7 +2,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     private let newReleasesTableView = UITableView()
-    let viewmodel = HomeViewModel(dataService: SpotifyAPIService())
+    private let viewmodel = HomeViewModel(dataService: SpotifyAPIService())
     var releasesList: [AlbumModel] = []
     
     override func viewDidLoad() {
@@ -12,14 +12,14 @@ class HomeViewController: UIViewController {
         initScreen()
     }
     
-    func initScreen(){
+    private func initScreen(){
         initTableView()
         layout()
         releasesData()
         viewmodel.getReleases()
     }
     
-    func layout(){
+    private func layout(){
         NSLayoutConstraint.activate([
             newReleasesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             newReleasesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -28,16 +28,15 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func initTableView() {
+    private func initTableView() {
         newReleasesTableView.translatesAutoresizingMaskIntoConstraints = false
         newReleasesTableView.dataSource = self
         newReleasesTableView.delegate = self
         newReleasesTableView.register(ReleasesListTableViewCell.self, forCellReuseIdentifier: "ReleasesListTableViewCell" )
         view.addSubview(newReleasesTableView)
-        
     }
     
-    func releasesData(){
+    private func releasesData(){
         viewmodel.releasesListDownloaded = { [self] in
             self.releasesList = self.viewmodel.releasesList ?? []
             self.newReleasesTableView.reloadData()
@@ -53,7 +52,7 @@ extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReleasesListTableViewCell", for: indexPath) as! ReleasesListTableViewCell
         let data = self.releasesList[indexPath.row]
-        cell.setCellValue(title: data.name, nameArtist: data.name, date: data.releaseDate, image: data.images[0].url)
+        cell.setCellValue(title: data.name, nameArtist: data.artists[0].name, date: data.releaseDate, image: data.images[0].url)
         
         return cell
     }

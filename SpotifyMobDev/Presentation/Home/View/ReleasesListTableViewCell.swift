@@ -2,8 +2,8 @@ import UIKit
 import Kingfisher
 
 class ReleasesListTableViewCell: UITableViewCell{
-    private var albumTitle = UILabel()
-    private var artistName = UILabel()
+    private let albumTitle = UILabel()
+    private let artistName = UILabel()
     private let releaseDate = UILabel()
     private let albumImage = UIImageView()
     
@@ -19,7 +19,7 @@ class ReleasesListTableViewCell: UITableViewCell{
     
     private func customCellConfigure(){
         albumImageCell()
-        albumTittleCell()
+        albumTitleCell()
         artistNameCell()
         releaseDateCell()
         layout()
@@ -38,7 +38,7 @@ class ReleasesListTableViewCell: UITableViewCell{
             artistName.topAnchor.constraint(equalTo: albumTitle.bottomAnchor, constant: 4),
             artistName.leadingAnchor.constraint(equalTo: albumImage.trailingAnchor, constant: 12),
             artistName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            releaseDate.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 25),
+            releaseDate.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 15),
             releaseDate.leadingAnchor.constraint(equalTo: albumImage.trailingAnchor, constant: 12)
         ])
     }
@@ -51,7 +51,7 @@ class ReleasesListTableViewCell: UITableViewCell{
         addSubview(albumImage)
     }
     
-    private func albumTittleCell(){
+    private func albumTitleCell(){
         albumTitle.translatesAutoresizingMaskIntoConstraints = false
         albumTitle.font = .boldSystemFont(ofSize: 20)
         albumTitle.textColor = .black
@@ -75,8 +75,8 @@ class ReleasesListTableViewCell: UITableViewCell{
     
     func setCellValue(title: String, nameArtist: String, date: String,image: String){
         self.albumTitle.text = title
-        self.artistName.text = nameArtist
-        self.releaseDate.text = date
+        self.artistName.text = "Artista: \(nameArtist)"
+        self.releaseDate.text = "Lanzamiento: \(date)"
         self.albumImage.kf.setImage(with: URL(string: image))
     }
 }

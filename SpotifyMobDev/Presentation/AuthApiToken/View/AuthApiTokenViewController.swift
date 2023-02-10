@@ -2,7 +2,7 @@ import UIKit
 import WebKit
 
 class AuthApiTokenViewController : UIViewController {
-    var viewModel = AuthApitokenViewModel(spotifyApiService: SpotifyAPIService())
+    private let viewModel = AuthApitokenViewModel(spotifyApiService: SpotifyAPIService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,7 +11,7 @@ class AuthApiTokenViewController : UIViewController {
         getApiToken()
     }
     
-    func getApiToken(){
+    private func getApiToken(){
         let urlRequest = viewModel.getApiURL()
         let webview = WKWebView()
         webview.load(urlRequest!)
@@ -19,7 +19,7 @@ class AuthApiTokenViewController : UIViewController {
         view = webview
     }
     
-    func goToHomeView(){
+    private func goToHomeView(){
         let viewController = TabBarController()
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -27,7 +27,6 @@ class AuthApiTokenViewController : UIViewController {
 extension AuthApiTokenViewController : WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let urlString = webView.url?.absoluteString else { return }
-        print(urlString)
         
         var tokenString = ""
         if urlString.contains("#access_token=") {

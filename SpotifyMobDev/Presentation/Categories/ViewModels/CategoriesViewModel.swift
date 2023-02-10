@@ -1,7 +1,7 @@
 import Foundation
 
 class CategoriesViewModel{
-    private var dataService : SpotifyAPIService?
+    private let dataService : SpotifyAPIService?
     var genresListDownloaded : (() -> ())?
     var genresList: [String]?
     
