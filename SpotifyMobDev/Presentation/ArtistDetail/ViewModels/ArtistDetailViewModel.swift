@@ -3,3 +3,4 @@ import UIKit
 class ArtistDetailViewModel{
     
 }
+
