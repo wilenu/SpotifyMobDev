@@ -2,13 +2,18 @@ import UIKit
 
 class CategoriesViewController : UIViewController {
     private let tableView = UITableView()
+    private let viewModel = CategoriesViewModel(dataService: SpotifyAPIService())
     private let genre = UILabel()
+    var genresList: [String] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        title = "Categorías"
+        title = "Géneros Musicales"
         tableSetup()
+        genresData()
+        viewModel.getGenres()
         layout()
     }
     
@@ -28,18 +33,23 @@ class CategoriesViewController : UIViewController {
         view.addSubview(tableView)
     }
     
+    func genresData(){
+        viewModel.genresListDownloaded = { [self] in
+            self.genresList = viewModel.genresList ?? []
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension CategoriesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return genresList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoriesCell", for: indexPath) as! CategoriesCell
-        //cell.textLabel?.text = "assdasdasd"
         cell.imageIcon.image = UIImage(systemName: "play.circle")
-        cell.genre.text = "Album"
+        cell.genre.text = self.genresList[indexPath.row]
         return cell
     }
 }

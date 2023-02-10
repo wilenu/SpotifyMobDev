@@ -64,6 +64,9 @@ extension HomeViewController : UITableViewDataSource {
 
 extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(ArtistDetailViewController(), animated: true)
+        let viewcontreoller = ArtistDetailViewController()
+        viewcontreoller.artisID = releasesList[indexPath.row].artists[0].id
+        //print(releasesList[indexPath.row].artists[0].id)
+        self.navigationController?.pushViewController(viewcontreoller, animated: true)
     }
 }

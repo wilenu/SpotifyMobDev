@@ -48,4 +48,5 @@ class CategoriesCell: UITableViewCell{
         genre.numberOfLines = 0
         addSubview(genre)
     }
+    
 }

@@ -7,13 +7,36 @@ class ArtistDetailViewController: UIViewController {
     private let descriptionTittle = UILabel()
     private let artistgenres = UILabel()
     private let artistImage = UIImageView()
+    var artisID: String = ""
+    let viewModel = ArtistDetailViewModel(dataService: SpotifyAPIService())
+    var artistInfo: ArtisInfoModel?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Artista"
+        artistInfoSetup()
         initSetup()
+        let a = artisID
+        print(a)
+        viewModel.getArtistInfo(artistID: a)
+        
+    }
+    
+    func artistInfoSetup(){
+        self.viewModel.artistInfoReady = { [self] in
+            self.artistInfo = self.viewModel.artistInfo
+            setArtistInfo()
+        }
+    }
+    
+    func setArtistInfo(){
+        guard let artistData = artistInfo else { return }
+        artistTittle.text = artistData.name
+        artistFolowers.text = "Seguidores: \((String(describing: artistData.followers.total)))"
+        artistgenres.text = artistData.genres.joined(separator: ",")
+        artistImage.kf.setImage(with: URL(string: artistData.images[0].url))
     }
     
     func initSetup(){
@@ -27,7 +50,7 @@ class ArtistDetailViewController: UIViewController {
     
     func layout(){
         NSLayoutConstraint.activate([
-            artistImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            artistImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             artistImage.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 20),
             artistImage.widthAnchor.constraint(equalToConstant: 120),
             artistImage.heightAnchor.constraint(equalToConstant: 120),
@@ -48,8 +71,7 @@ class ArtistDetailViewController: UIViewController {
     
     func artistImageSetup(){
         artistImage.translatesAutoresizingMaskIntoConstraints = false
-        artistImage.image = UIImage(named: "icon")
-        artistImage.contentMode = .scaleAspectFit
+        artistImage.contentMode = .scaleAspectFill
         artistImage.layer.cornerRadius = 15
         artistImage.clipsToBounds = true
         view.addSubview(artistImage)
@@ -57,26 +79,24 @@ class ArtistDetailViewController: UIViewController {
     
     func artistTittleSetup(){
         artistTittle.translatesAutoresizingMaskIntoConstraints = false
-        artistTittle.font = .boldSystemFont(ofSize: 35)
+        artistTittle.font = .boldSystemFont(ofSize: 30)
         artistTittle.numberOfLines = 0
-        artistTittle.text = "Willy"
         view.addSubview(artistTittle)
     }
     
     func artistFolowersSetup(){
         artistFolowers.translatesAutoresizingMaskIntoConstraints = false
-        artistFolowers.font = .systemFont(ofSize: 20)
+        artistFolowers.font = .systemFont(ofSize: 18)
         artistFolowers.textColor = .black
-        artistFolowers.text = "2500"
         artistFolowers.numberOfLines = 0
         view.addSubview(artistFolowers)
     }
     
     func descriptionTittleSetup(){
         descriptionTittle.translatesAutoresizingMaskIntoConstraints = false
-        descriptionTittle.font = .systemFont(ofSize: 30)
+        descriptionTittle.font = .boldSystemFont(ofSize: 30)
         descriptionTittle.textColor = .black
-        descriptionTittle.text = "Descripción"
+        descriptionTittle.text = "Géneros"
         descriptionTittle.textAlignment = .left
         descriptionTittle.numberOfLines = 0
         view.addSubview(descriptionTittle)
@@ -87,8 +107,6 @@ class ArtistDetailViewController: UIViewController {
         artistgenres.font = .systemFont(ofSize: 20)
         artistgenres.textColor = .black
         artistgenres.numberOfLines = 0
-        artistgenres.text = "regueton,bachata,bolero,hip hop,cumbia, willy,willy,willy,willy,v,willy,willy,willy,willy,v"
-        artistgenres.textAlignment = .justified
         view.addSubview(artistgenres)
     }
 }

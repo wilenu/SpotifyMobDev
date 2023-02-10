@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FAC1B0F2996E2630042D4EA /* ArtisInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC1B0E2996E2630042D4EA /* ArtisInfoModel.swift */; };
 		6FB6CF0A2995584600F69752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF092995584600F69752 /* AppDelegate.swift */; };
 		6FB6CF0C2995584600F69752 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF0B2995584600F69752 /* SceneDelegate.swift */; };
 		6FB6CF112995584600F69752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FB6CF0F2995584600F69752 /* Main.storyboard */; };
@@ -29,12 +30,15 @@
 		6FB6CF7429959A2300F69752 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF7329959A2300F69752 /* CategoriesViewController.swift */; };
 		6FB6CF782995B2FB00F69752 /* ReleasesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF772995B2FB00F69752 /* ReleasesListTableViewCell.swift */; };
 		6FB6CF7D2996B44400F69752 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */; };
+		6FB6CF7F2996C5F100F69752 /* GenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF7E2996C5F100F69752 /* GenresResponse.swift */; };
+		6FB6CF812996C94100F69752 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CF802996C94100F69752 /* CategoriesViewModel.swift */; };
 		8AC50F7265847542AF8245ED /* Pods_SpotifyMobDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA2396FB6CCDB065A2C1840 /* Pods_SpotifyMobDev.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1ADF7188B7FB3C4EF1E82F02 /* Pods-SpotifyMobDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyMobDev.release.xcconfig"; path = "Target Support Files/Pods-SpotifyMobDev/Pods-SpotifyMobDev.release.xcconfig"; sourceTree = "<group>"; };
 		1FA2396FB6CCDB065A2C1840 /* Pods_SpotifyMobDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyMobDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FAC1B0E2996E2630042D4EA /* ArtisInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtisInfoModel.swift; sourceTree = "<group>"; };
 		6FB6CF062995584600F69752 /* SpotifyMobDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyMobDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB6CF092995584600F69752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FB6CF0B2995584600F69752 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		6FB6CF7329959A2300F69752 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		6FB6CF772995B2FB00F69752 /* ReleasesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleasesListTableViewCell.swift; sourceTree = "<group>"; };
 		6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
+		6FB6CF7E2996C5F100F69752 /* GenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponse.swift; sourceTree = "<group>"; };
+		6FB6CF802996C94100F69752 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		FD1869CC6C68AB57A291903E /* Pods-SpotifyMobDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyMobDev.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyMobDev/Pods-SpotifyMobDev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +165,8 @@
 				6FB6CF672995891C00F69752 /* AlbumsListModel.swift */,
 				6FB6CF692995892E00F69752 /* AlbumModel.swift */,
 				6FB6CF6B2995894200F69752 /* ArtistModel.swift */,
+				6FB6CF7E2996C5F100F69752 /* GenresResponse.swift */,
+				6FAC1B0E2996E2630042D4EA /* ArtisInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 				6FB6CF3F29955BF500F69752 /* HomeViewModel.swift */,
 				6FB6CF2B29955A3200F69752 /* Categories */,
 				6FB6CF772995B2FB00F69752 /* ReleasesListTableViewCell.swift */,
+				6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -196,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				6FB6CF7329959A2300F69752 /* CategoriesViewController.swift */,
-				6FB6CF7C2996B44400F69752 /* CategoriesCell.swift */,
+				6FB6CF802996C94100F69752 /* CategoriesViewModel.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -379,8 +388,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FAC1B0F2996E2630042D4EA /* ArtisInfoModel.swift in Sources */,
 				6FB6CF3829955BA900F69752 /* SplashViewModel.swift in Sources */,
 				6FB6CF4029955BF500F69752 /* HomeViewModel.swift in Sources */,
+				6FB6CF812996C94100F69752 /* CategoriesViewModel.swift in Sources */,
 				6FB6CF662995890000F69752 /* ReleasesResponse.swift in Sources */,
 				6FB6CF722995983F00F69752 /* TabBarController.swift in Sources */,
 				6FB6CF782995B2FB00F69752 /* ReleasesListTableViewCell.swift in Sources */,
@@ -391,6 +402,7 @@
 				6FB6CF7D2996B44400F69752 /* CategoriesCell.swift in Sources */,
 				6FB6CF3E29955BE700F69752 /* HomeViewController.swift in Sources */,
 				6FB6CF6E2995898F00F69752 /* SpotifyAPIService.swift in Sources */,
+				6FB6CF7F2996C5F100F69752 /* GenresResponse.swift in Sources */,
 				6FB6CF0C2995584600F69752 /* SceneDelegate.swift in Sources */,
 				6FB6CF3A29955BCA00F69752 /* ArtistDetailViewController.swift in Sources */,
 				6FB6CF6A2995892E00F69752 /* AlbumModel.swift in Sources */,

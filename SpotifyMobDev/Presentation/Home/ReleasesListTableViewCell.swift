@@ -49,7 +49,6 @@ class ReleasesListTableViewCell: UITableViewCell{
         albumImage.translatesAutoresizingMaskIntoConstraints = false
         albumImage.layer.cornerRadius = 15
         albumImage.clipsToBounds = true
-        albumImage.backgroundColor = .blue
         addSubview(albumImage)
     }
     
@@ -63,7 +62,7 @@ class ReleasesListTableViewCell: UITableViewCell{
     
     private func artistNameCell(){
         artistName.font = .systemFont(ofSize: 16)
-        artistName.textColor = .lightGray
+        artistName.textColor = .black
         artistName.translatesAutoresizingMaskIntoConstraints = false
         addSubview(artistName)
     }
